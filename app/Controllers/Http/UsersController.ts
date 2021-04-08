@@ -65,18 +65,23 @@ export default class UsersController {
         if(!usersBase64.users){
             return response.status(400).json({'err':'File is required'})
         }
-        const users =await this.fileUpload(usersBase64.users)
+        const users =await this.fileProcess(usersBase64.users)
         return{'msg':'Users crearted', users}
         
     }
 
 
-    fileUpload = async function( base64) {
+    fileProcess = async ( base64)=> {
 
         const base64Data =  Buffer.from(base64.replace(/^data:text\/\w+;base64,/, ""), 'base64');
         const type = base64.split(';')[0].split('/')[1];
-        console.log(base64Data.toString());
-        return base64Data.toString()
+
+        const usersDb= base64Data.toString().trim().split("\n");
+        usersDb.forEach(user => {
+            console.log(user)
+        });
+
+        return usersDb
        
     }
 
