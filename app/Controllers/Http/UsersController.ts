@@ -76,7 +76,7 @@ export default class UsersController {
         const base64Data =  Buffer.from(base64.replace(/^data:text\/\w+;base64,/, ""), 'base64');
         const type = base64.split(';')[0].split('/')[1];
 
-        const usersDb= base64Data.toString().trim().split("\n");
+        const usersDb= base64Data.toString().trim().split(";\n");
         usersDb.forEach(user => {
             console.log(user)
         });
