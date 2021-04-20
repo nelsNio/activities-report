@@ -29,6 +29,8 @@ Route.group(()=>{
     Route.put('/update-user/:id', 'UsersController.setEditUsers')
     Route.delete('/delete-user/:id', 'UsersController.destroy')
     Route.post('upload-users', 'UsersController.uploadUsersFile')
+    Route.post('upload-zip', 'UsersController.uploadFileZip')
+    Route.post('upload-zip-text', 'UsersController.uploadFileZipBase64')
   
 
   }).prefix('users')
